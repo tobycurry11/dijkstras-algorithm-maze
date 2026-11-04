@@ -1,8 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <chrono>
 
 int main() {
+    auto startTime = std::chrono::steady_clock::now();
+
     std::cout << " PATHFINDING VISUALISER\n";
     std::cout << " -----------------------\n";
 
@@ -46,6 +49,12 @@ int main() {
 
         std::cout << '\n';
     }
+
+    auto endTime = std::chrono::steady_clock::now();
+    auto elapsed = std::chrono::duration<double, std::milli>(
+        endTime - startTime
+    ).count();
+    std::cout << "Time taken: " << elapsed << " ms\n";
 
     return 0;
 }
