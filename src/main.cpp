@@ -53,7 +53,7 @@ int main() {
     auto endTime = std::chrono::steady_clock::now();
     auto elapsed = std::chrono::duration<double, std::milli>(
         endTime - startTime
-    ).count();
+    ).count();                            // .count() returns a raw number instead of a duration object
     std::cout << "Time taken: " << elapsed << " ms\n";
 
     return 0;
