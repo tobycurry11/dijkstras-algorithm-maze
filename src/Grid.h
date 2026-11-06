@@ -14,6 +14,7 @@ class Grid {
         int rows;
         int cols;
 
+        static int validateDimension(int value);
         std::vector<std::vector<Cell>> cells;
 
     public:

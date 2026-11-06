@@ -5,7 +5,7 @@ int main() {
     std::cout << "PATHFINDING VISUALISER\n";
     std::cout << "-----------------------\n\n";
 
-    Grid grid(10, 10);
+    Grid grid(-1, 10);
 
     grid.setStart(0, 0);
     grid.setEnd(9, 9);
@@ -14,6 +14,7 @@ int main() {
     grid.setWall(3, 3);
     grid.setWall(6, 7);
     grid.setWall(9, 6);
+    grid.setWall(-1, 5);
 
     grid.print();
 

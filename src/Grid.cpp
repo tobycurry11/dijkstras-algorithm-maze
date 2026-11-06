@@ -2,12 +2,18 @@
 #include <iostream>
 #include <stdexcept> // defines exception classes for error handling
 
+int Grid::validateDimension(int value) {
+    if (value <= 0) {
+        throw std::invalid_argument("Grid dimensions must be positive");
+    }
+
+    return value;
+}
+
 Grid::Grid(int rows, int cols)
-        : rows(rows), cols(cols),
-        cells(rows, std::vector<Cell>(cols, Cell::Empty)) {
-            if (rows <= 0 || cols <= 0) {
-                throw std::invalid_argument("Grid dimensions must be positive");
-        }
+        : rows(validateDimension(rows)),
+          cols(validateDimension(cols)),
+          cells(this->rows, std::vector<Cell>(this->cols, Cell::Empty)) {
 }
 
 bool Grid::isValid(int row, int col) const {
@@ -16,8 +22,9 @@ bool Grid::isValid(int row, int col) const {
 }
 
 void Grid::setWall(int row, int col) {
-    if (isValid(row, col)) {
-        cells[row][col] = Cell::Wall;
+    if (isValid(row, col) &&
+       cells[row][col] == Cell::Empty) {
+       cells[row][col] = Cell::Wall;
     }
 }
 
