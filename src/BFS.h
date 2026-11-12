@@ -8,4 +8,8 @@ struct Position {
     int col;
 };
 
-std::vector<Position> findPathBFS(const Grid& grid, Position start, Position end);
+std::vector<Position> findPathBFS(
+    const Grid& grid,
+    Position start,
+    Position end
+);
